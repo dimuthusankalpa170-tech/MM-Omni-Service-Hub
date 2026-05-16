@@ -91,6 +91,10 @@
     </div>
 </section>
     <section class="technicians-categories">
+        <div class="search-container" style="text-align: center; margin: 20px 0 40px 0;">
+    <input type="text" id="serviceSearch" placeholder="Search for a service (e.g. Plumbing)..." 
+           style="padding: 15px; width: 85%; max-width: 500px; border-radius: 30px; border: 2px solid #007bff; outline: none; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+</div>
         <div class="section-title">
             <h2>OUR TECHNICIAN CATEGORIES</h2>
             <p>Select a category to find the best expert for your job</p>
@@ -134,9 +138,24 @@
             </div>
         </div>
     </section>
+    <section id="about" style="padding: 60px 20px; background-color: #f8f9fa; text-align: center; border-radius: 20px; margin: 40px 0; font-family: sans-serif;">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <h2 style="color: #007bff; margin-bottom: 20px;">About MM Omni Service Hub</h2>
+        <p style="font-size: 1.15rem; color: #444; line-height: 1.8;">
+            Welcome to <b>MM Omni Service Hub</b>, your trusted partner for all technical repairs. 
+            We bridge the gap between professional technicians and customers who need reliable service. 
+            From electrical work to AC maintenance, we ensure quality and speed right at your doorstep.
+        </p>
+    </div>
+</section>
 <section id="map-section" style="padding: 40px 20px; text-align: center; background: #fff;">
     <h2 style="margin-bottom: 20px; color: #333;">Find Technicians Near You</h2>
     <div id="map" style="height: 400px; width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></div>
+    <div class="social-links" style="margin-top: 20px;">
+    <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+    <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+    <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+</div>
 </section>
 <section id="map-section" style="padding: 40px 20px; text-align: center; background: #fff;">
     <h2 style="margin-bottom: 20px; color: #333;">Find Technicians Near You</h2>
@@ -196,6 +215,22 @@
         setTimeout(function(){ 
             map.invalidateSize();
         }, 500);
+    });
+</script>
+<script>
+    // Search Functionality
+    document.getElementById('serviceSearch').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let cards = document.querySelectorAll('.tech-item'); 
+
+        cards.forEach(card => {
+            let title = card.querySelector('p').textContent.toLowerCase();
+            if(title.includes(filter)) {
+                card.style.display = ""; 
+            } else {
+                card.style.display = "none"; 
+            }
+        });
     });
 </script>
 </body>
