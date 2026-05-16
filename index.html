@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Omni Service Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h2>MM OMNI <span>SERVICE HUB</span></h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Technicians</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <span class="phone"><i class="fas fa-phone"></i> +60 11 1495 3554</span>
+                <button class="btn-request">REQUEST SERVICE</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h3>ONE PLACE.</h3>
+            <h1>ALL <span class="highlight">SOLUTIONS.</span></h1>
+            <p>Your one-stop destination for all your technical service needs. We connect you with the best professionals.</p>
+            <div class="hero-btns">
+                <button class="btn-primary">EXPLORE SERVICES</button>
+                <button class="btn-secondary">OUR TECHNICIANS</button>
+            </div>
+        </div>
+    </section>
+<section class="request-section" id="request-service">
+    <div class="section-title">
+        <h2>REQUEST A SERVICE</h2>
+        <p>Fill out the form below and we will contact you shortly.</p>
+    </div>
+
+    <div class="contact-form-container">
+        <form action="https://formspree.io/f/xojrgzzo" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group">
+                <select name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="Automobile">Automobile</option>
+                    <option value="AC-Repair">AC & Repair</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="CCTV">CCTV & Security</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea name="message" rows="5" placeholder="Tell us more about your requirement..."></textarea>
+            </div>
+            <div class="membership-info" style="margin-top: 15px; margin-bottom: 15px; font-size: 0.9rem; color: #333; background: #f9f9f9; padding: 10px; border-radius: 5px; border-left: 4px solid #007bff;">
+        <p style="margin: 0;">🎁 <strong>Special Offer:</strong> First 3 months are FREE!</p>
+        <p style="margin: 5px 0;">💳 After 3 months, a membership fee of <strong>Rs. 1000/month</strong> will apply.</p>
+        
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; margin-top: 8px;">
+            <input type="checkbox" name="terms_accepted" required> 
+            <span style="font-weight: bold;">I agree to the membership terms.</span>
+        </label>
+    </div>
+
+    <button type="submit" class="submit-btn">SEND REQUEST</button>
+</form>
+            <button type="submit" class="btn-submit">SEND REQUEST</button>
+        </form>
+    </div>
+</section>
+    <section class="technicians-categories">
+        <div class="section-title">
+            <h2>OUR TECHNICIAN CATEGORIES</h2>
+            <p>Select a category to find the best expert for your job</p>
+        </div>
+
+        <div class="tech-grid">
+<div class="tech-grid">
+                <a href="#request-service" class="category-link">
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-car"></i></div>
+                        <p>Automobile</p>
+                    </div>
+                </a>
+
+                <a href="#request-service" class="category-link">
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-snowflake"></i></div>
+                        <p>AC & Repair</p>
+                    </div>
+                </a>
+
+                <a href="#request-service" class="category-link">
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-bolt"></i></div>
+                        <p>Electrical</p>
+                    </div>
+                </a>
+
+                <a href="#request-service" class="category-link">
+                    <div class="tech-item">
+                        <div class="tech-icon"><i class="fas fa-faucet"></i></div>
+                        <p>Plumbing</p>
+                    </div>
+                </a>
+            </div>
+                <p>CCTV & Security</p>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-tools"></i></div>
+                <p>Home Appliance</p>
+            </div>
+        </div>
+    </section>
+<section id="map-section" style="padding: 40px 20px; text-align: center; background: #fff;">
+    <h2 style="margin-bottom: 20px; color: #333;">Find Technicians Near You</h2>
+    <div id="map" style="height: 400px; width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></div>
+</section>
+<section id="map-section" style="padding: 40px 20px; text-align: center; background: #fff;">
+    <h2 style="margin-bottom: 20px; color: #333;">Find Technicians Near You</h2>
+    <div id="map" style="height: 400px; width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></div>
+</section>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h2>MM OMNI <span>SERVICE HUB</span></h2>
+                <p>Your trusted partner for all technical services. We provide verified and skilled technicians for your every need.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14bmaoZeSTs/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/601114953554" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Technicians</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> +60 11 1495 3554</p>
+                <p><i class="fas fa-envelope"></i> Dimuthusankalpa170@Gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MM Omni Service Hub. All Rights Reserved.</p>
+        </div>
+    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the map and set its view to Sri Lanka coordinates
+        var map = L.map('map').setView([7.8731, 80.7718], 7); 
+
+        // Add the OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Add a marker for your main location
+        L.marker([6.9271, 79.8612]).addTo(map)
+            .bindPopup('<b>MM Omni Service Hub</b><br>Available islandwide.')
+            .openPopup();
+            
+        // This command ensures the map renders correctly even if it's inside a hidden container initially
+        setTimeout(function(){ 
+            map.invalidateSize();
+        }, 500);
+    });
+</script>
+</body>
+</html>
